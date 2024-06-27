@@ -15,8 +15,8 @@ class RelatedQuestionError(Exception):
 
     def __repr__(self):
         return (
-            f'An unkown error occured: {self.error}.'
-            f' Please report it on {GITHUB_LINK}.'
+            f"An unkown error occured: {self.error}."
+            f" Please report it on {GITHUB_LINK}."
         )
 
 
@@ -31,9 +31,9 @@ class FeaturedSnippetParserError(RelatedQuestionError):
 
     def __repr__(self):
         return (
-            f"Cannot parse result page of '{self.text}'."
+            f"Cannot parse result page of ."
             f" It mays due to a format change of result page."
-            f' Please report it on {GITHUB_LINK}.'
+            f" Please report it on {GITHUB_LINK}."
         )
 
 
@@ -48,9 +48,9 @@ class RelatedQuestionParserError(RelatedQuestionError):
 
     def __repr__(self):
         return (
-            f"Cannot parse result page of '{self.text}'."
+            f"Cannot parse result page of ."
             f" It mays due to a format change of result page."
-            f' Please report it on {GITHUB_LINK}.'
+            f" Please report it on {GITHUB_LINK}."
         )
 
 
@@ -63,14 +63,12 @@ class GoogleSearchRequestFailedError(RelatedQuestionError):
         self.message = message
 
     def __repr__(self):
-        return (
-            f"Failed to requests {self.url}/{self.keyword}"
-            f"\n{self.message}"
-        )
+        return f"Failed to requests {self.url}/{self.keyword}" f"\n{self.message}"
 
 
 class InvalidQuestionInputFileError(RelatedQuestionError):
     """Exception raised when user enter an invalid question input"""
+
     """ for data collector """
 
     def __init__(self, input_file, message):
@@ -78,13 +76,12 @@ class InvalidQuestionInputFileError(RelatedQuestionError):
         self.message = message
 
     def __repr__(self):
-        return (
-            f"Invalid input file: {self.input_file}\n{self.message}"
-        )
+        return f"Invalid input file: {self.input_file}\n{self.message}"
 
 
 class FailedToWriteOuputFileError(RelatedQuestionError):
-    """Exception raised when program fails to write data to """
+    """Exception raised when program fails to write data to"""
+
     """ output file for data colletor"""
 
     def __init__(self, output_file, message):
@@ -92,9 +89,7 @@ class FailedToWriteOuputFileError(RelatedQuestionError):
         self.message = message
 
     def __repr__(self):
-        return (
-            f"Cannot write to {self.output_file}\n{self.message}"
-        )
+        return f"Cannot write to {self.output_file}\n{self.message}"
 
 
 class RequestError(RelatedQuestionError):
