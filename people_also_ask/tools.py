@@ -19,9 +19,7 @@ def raise_featuredsnippetparsererror_if_failed(func):
 
 
 def retryable(nb_times_retry):
-
     def decorator(func: Callable):
-
         def wrapper(*args, **kwargs):
             for _ in range(nb_times_retry - 1):
                 try:
@@ -64,7 +62,6 @@ def remove_redundant(elements):
 
 
 class CallingSemaphore(ContextDecorator):
-
     def __init__(self, nb_call_times_limit, expired_time):
         self.nb_call_times_limit = nb_call_times_limit
         self.expired_time = expired_time

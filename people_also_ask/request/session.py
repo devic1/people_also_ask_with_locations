@@ -13,21 +13,15 @@ from requests import Session as _Session
 
 
 SESSION = _Session()
-NB_TIMES_RETRY = os.environ.get(
-    "RELATED_QUESTION_NB_TIMES_RETRY", 3
-)
-NB_REQUESTS_LIMIT = os.environ.get(
-    "RELATED_QUESTION_NB_REQUESTS_LIMIT", 25
-)
+NB_TIMES_RETRY = os.environ.get("RELATED_QUESTION_NB_TIMES_RETRY", 3)
+NB_REQUESTS_LIMIT = os.environ.get("RELATED_QUESTION_NB_REQUESTS_LIMIT", 25)
 NB_REQUESTS_DURATION_LIMIT = os.environ.get(
     "RELATED_QUESTION_NB_REQUESTS_DURATION_LIMIT", 60  # seconds
 )
 logging.basicConfig()
-semaphore = CallingSemaphore(
-    NB_REQUESTS_LIMIT, NB_REQUESTS_DURATION_LIMIT
-)
+semaphore = CallingSemaphore(NB_REQUESTS_LIMIT, NB_REQUESTS_DURATION_LIMIT)
 HEADERS = {
-    'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
     " AppleWebKit/537.36 (KHTML, like Gecko) "
     "Chrome/84.0.4147.135 Safari/537.36"
 }
@@ -37,7 +31,6 @@ logger = logging.getLogger(__name__)
 
 
 class ProxyGeneator:
-
     def __init__(self, proxies: Optional[tuple]):
         self.proxies = proxies
 
@@ -53,9 +46,7 @@ class ProxyGeneator:
         if not self.proxies:
             return {}
         proxy = next(self.iter_proxy)
-        return {
-            "http": proxy
-        }
+        return {"http": proxy}
 
 
 def _load_proxies() -> Optional[tuple]:
@@ -88,11 +79,7 @@ def get(url: str, params) -> requests.Response:
                 proxies=proxies,
             )
     except Exception:
-        raise RequestError(
-            url, params, proxies, traceback.format_exc()
-        )
+        raise RequestError(url, params, proxies, traceback.format_exc())
     if response.status_code != 200:
-        raise RequestError(
-            url, params, proxies, response.text
-        )
+        raise RequestError(url, params, proxies, response.text)
     return response

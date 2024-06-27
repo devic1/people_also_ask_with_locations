@@ -5,9 +5,8 @@ import setuptools
 
 
 def local_file(file):
-    return codecs.open(
-        os.path.join(os.path.dirname(__file__), file), 'r', 'utf-8'
-    )
+    return codecs.open(os.path.join(os.path.dirname(__file__), file), "r", "utf-8")
+
 
 setuptools.setup(
     name="people_also_ask",
@@ -15,11 +14,11 @@ setuptools.setup(
     author="LE Van Tuan",
     author_email="leavantuan2312@gmail.com",
     packages=setuptools.find_packages(),
-    long_description=local_file('README.md').read(),
+    long_description=local_file("README.md").read(),
     long_description_content_type="text/markdown",
     url="https://github.com/lagranges/people_also_ask",
     classifiers=[
-	"Topic :: Software Development :: Libraries :: Python Modules",
+        "Topic :: Software Development :: Libraries :: Python Modules",
         "Topic :: Utilities",
         "Development Status :: 5 - Production/Stable",
         "Operating System :: MacOS",
@@ -34,5 +33,5 @@ setuptools.setup(
         "requests",
         "jinja2",
     ],
-    python_requires=">=3.6"
+    python_requires=">=3.6",
 )

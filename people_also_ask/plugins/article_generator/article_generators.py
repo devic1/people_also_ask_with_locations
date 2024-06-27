@@ -15,7 +15,7 @@ def generate_article(title: str):
     for question in questions:
         contents[question] = paa.get_simple_answer(question)
 
-    file_loader = FileSystemLoader('templates')
+    file_loader = FileSystemLoader("templates")
     env = Environment(loader=file_loader)
 
     cur_dir = Path(__file__).parent
@@ -26,7 +26,7 @@ def generate_article(title: str):
         title=title,
         introduction=introduction,
         contents=contents,
-        get_question_id=lambda x: x.replace(" ", "_")
+        get_question_id=lambda x: x.replace(" ", "_"),
     )
     with open("article.html", "w") as fd:
         fd.write(output)
