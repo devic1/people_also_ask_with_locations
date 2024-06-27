@@ -30,40 +30,12 @@ import people_also_ask
 ### How to get related questions
 
 ```python
-people_also_ask.get_related_questions("coffee")
+people_also_ask.get_related_questions(text="reinforcement learning", location="in")
 
-['Is coffee good for your health?',
-  'Why is coffee bad for you?',
-  'Who invented coffee?',
- 'What do u know about coffee?']
+['Is an example of reinforcement learning?', 'What is the reinforcement process of learning?', 'What are the two types of reinforcement learning?', 'What is the basic reinforcement learning?']
 ```
 
-### How to get more questions
 
-```python
-people_also_ask.get_related_questions("coffee", 5)
-
-['How did coffee originate?',
- 'Is coffee good for your health?',
-  'Who brought coffee America?',
- 'Who invented coffee?',
- 'Why is coffee bad for you?',
- 'Why is drinking coffee bad for you?']
-```
-
-### Generate unlimited questions
-
-```python
-for question in people_also_ask.generate_related_questions("cofee")
-
-Why is coffee bad for you?
-Who invented coffee?
-Is coffee good for your health?
-Who brought coffee America?
-How did coffee originate?
-Why is drinking coffee bad for you?
-....
-```
 
 ### Get answer for a question
 
